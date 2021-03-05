@@ -1,9 +1,9 @@
 #!/bin/bash
 # Colors: \e[36m=Cyan M ; \e[92m=Light green ; \e[91m=Light red ; \e[93m=Light yellow ; \e[31m=green ; \e[0m=Default ; \e[33m=Yellow ; \e[31m=Red
 
-#Version: 1.9.3 - 20210305
+#Version: 1.0 - 20210305
 #branch="development"
-#Installer: rm /tmp/install_ledb.sh > /dev/null  2>&1; wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/scripts/install.sh -qO /tmp/install_ledb.sh; chmod +x /tmp/install_ledb.sh; /tmp/./install_ledb.sh 
+#OneLineInstaller: rm /tmp/install_ledb.sh > /dev/null  2>&1; wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/scripts/install.sh -qO /tmp/install_ledb.sh; chmod +x /tmp/install_ledb.sh; /tmp/./install_ledb.sh; rm /tmp/install_ledb.sh > /dev/null  2>&1 
 repo="https://github.com/splitti/phoniebox_led_control"
 branch="master"
 
@@ -171,7 +171,19 @@ echo -e "///   ${green} ╚═════╝ ╚═════╝ ╚═╝   
 echo -e "///                                                                                                   ///"
 echo -e "/////////////////////////////////////////////////////////////////////////////////////////////////////////"
 echo -e ""
-echo -e "Please edit the file /home/pi/phoniebox_led_control/gpiozero_led.py to match your GPIO-Configuration!"
+echo -e "Please edit the file ${red}/home/pi/phoniebox_led_control/gpiozero_led.py${nocolor} to match your GPIO-Configuration!"
 echo -e ""
-read -n 1 -s -r -p "Press any key to continue"
+echo -e "${yellow}PREV-LED     = GPIO 5{nocolor}"
+echo -e "${yellow}PLAY-LED     = GPIO 6{nocolor}"
+echo -e "${yellow}NEXT-LED     = GPIO 22{nocolor}"
+echo -e "${yellow}VOLUP-LED    = GPIO 24{nocolor}"
+echo -e "${yellow}VOLDOWN-LED  = GPIO 23{nocolor}"
+
+LED_PREV = PWMLED(5)
+LED_PLAY = PWMLED(6)
+LED_NEXT = PWMLED(22)
+LED_VOLUP = PWMLED(24)
+LED_VOLDOWN = PWMLED(23)
+echo -e ""
+read -n 1 -s -r -p "Press any key to finish installation"
 clear
