@@ -173,11 +173,13 @@ echo -e "///////////////////////////////////////////////////////////////////////
 echo -e ""
 echo -e "Please edit the file ${red}/home/pi/phoniebox_led_control/gpiozero_led.py${nocolor} to match your GPIO-Configuration!"
 echo -e ""
-echo -e "${yellow}PREV-LED     = GPIO 5{nocolor}"
-echo -e "${yellow}PLAY-LED     = GPIO 6{nocolor}"
-echo -e "${yellow}NEXT-LED     = GPIO 22{nocolor}"
-echo -e "${yellow}VOLUP-LED    = GPIO 24{nocolor}"
-echo -e "${yellow}VOLDOWN-LED  = GPIO 23{nocolor}"
+echo -e "CURRENT CONFIGURATION:"
+echo -e "========================================="
+echo -e "${yellow}PREV-LED     = GPIO 5${nocolor}"
+echo -e "${yellow}PLAY-LED     = GPIO 6${nocolor}"
+echo -e "${yellow}NEXT-LED     = GPIO 22${nocolor}"
+echo -e "${yellow}VOLUP-LED    = GPIO 24${nocolor}"
+echo -e "${yellow}VOLDOWN-LED  = GPIO 23${nocolor}"
 
 LED_PREV = PWMLED(5)
 LED_PLAY = PWMLED(6)
