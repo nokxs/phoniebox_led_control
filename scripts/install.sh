@@ -130,20 +130,20 @@ sudo rm -R ~/phoniebox_led_control > /dev/null  2>&1
 echo -e "${green}done${nocolor}";
 
 echo -n -e "   --> Create Directory:            "
-mkdir ~/phoniebox_led_control
+mkdir ~/phoniebox_led_control  > /dev/null  2>&1
 echo -e "${green}done${nocolor}";
 
 echo -n -e "   --> Downloading Files:           "
 if [ $ani_type = "1" ]
 then
-	wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/gpiozero_led_kr.py -qO /home/pi/phoniebox_led_control/gpiozero_led.py
+	wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/gpiozero_led_kr.py -qO /home/pi/phoniebox_led_control/gpiozero_led.py > /dev/null  2>&1
 else
-	wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/gpiozero_led_st.py -qO /home/pi/phoniebox_led_control/gpiozero_led.py
+	wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/gpiozero_led_st.py -qO /home/pi/phoniebox_led_control/gpiozero_led.py > /dev/null  2>&1
 fi
 echo -e "${green}done${nocolor}";
 
 echo -n -e "   --> Installing Service:          "
-sudo wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/service/phoniebox_led_control.service -qO /etc/systemd/system/phoniebox_led_control.service
+sudo wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/service/phoniebox_led_control.service -qO /etc/systemd/system/phoniebox_led_control.service > /dev/null  2>&1
 sudo chown root:root /etc/systemd/system/phoniebox_led_control.service > /dev/null 2>&1
 sudo chmod 644 /etc/systemd/system/phoniebox_led_control.service > /dev/null 2>&1
 sudo systemctl enable phoniebox_led_control > /dev/null 2>&1
