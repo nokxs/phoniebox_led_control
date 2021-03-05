@@ -3,7 +3,8 @@
 
 #Version: 1.9.3 - 20210305
 #branch="development"
-repo="https://github.com/splitti/button_led_control/"
+#Installer: rm /tmp/install_ledb.sh > /dev/null  2>&1; wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/scripts/install.sh -qO /tmp/install_ledb.sh; chmod +x /tmp/install_ledb.sh; /tmp/./install_ledb.sh 
+repo="https://github.com/splitti/phoniebox_led_control"
 branch="master"
 
 nocolor='\e[0m'
@@ -122,14 +123,55 @@ for p in ${packages[@]}; do
 	fi
 done
 echo -n -e "   --> Delete existing service:     "
+sudo service phoniebox_led_control stop > /dev/null 2>&1
+sudo systemctl disable phoniebox_led_control > /dev/null  2>&1
+sudo rm /etc/systemd/system/phoniebox_led_control.service > /dev/null  2>&1
+sudo rm -R ~/phoniebox_led_control > /dev/null  2>&1
 echo -e "${green}done${nocolor}";
+
 echo -n -e "   --> Create Directory:            "
+mkdir ~/phoniebox_led_control
 echo -e "${green}done${nocolor}";
+
 echo -n -e "   --> Downloading Files:           "
+if [ $ani_type = "1" ]
+then
+	wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/gpiozero_led_kr.py -O /home/pi/phoniebox_led_control/gpiozero_led.py
+else
+	wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/gpiozero_led_st.py -O /home/pi/phoniebox_led_control/gpiozero_led.py
+fi
 echo -e "${green}done${nocolor}";
+
 echo -n -e "   --> Installing Service:          "
+sudo wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/service/phoniebox_led_control.service -O /etc/systemd/system/phoniebox_led_control.service
+sudo chown root:root /etc/systemd/system/phoniebox_led_control.service > /dev/null 2>&1
+sudo chmod 644 /etc/systemd/system/phoniebox_led_control.service > /dev/null 2>&1
+sudo systemctl enable phoniebox_led_control > /dev/null 2>&1
 echo -e "${green}done${nocolor}";
+
 echo -e ""
 read -n 1 -s -r -p "Press any key to continue"
-
-/etc/systemd/system/phoniebox_led_control.service
+clear
+echo -e ""
+echo -e "/////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo -e "///                                                                                                   ///"
+echo -e "///   ${green}██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗      █████╗ ████████╗██╗ ██████╗ ███╗   ██╗   ${nocolor}///";
+echo -e "///   ${green}██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║   ${nocolor}///";
+echo -e "///   ${green}██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     ███████║   ██║   ██║██║   ██║██╔██╗ ██║   ${nocolor}///";
+echo -e "///   ${green}██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║   ${nocolor}///";
+echo -e "///   ${green}██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║   ${nocolor}///";
+echo -e "///   ${green}╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ${nocolor}///";
+echo -e "///                                                                                                   ///";
+echo -e "///   ${green} ██████╗ ██████╗ ███╗   ███╗██████╗ ██╗     ███████╗████████╗███████╗                           ${nocolor}///";
+echo -e "///   ${green}██╔════╝██╔═══██╗████╗ ████║██╔══██╗██║     ██╔════╝╚══██╔══╝██╔════╝                           ${nocolor}///";
+echo -e "///   ${green}██║     ██║   ██║██╔████╔██║██████╔╝██║     █████╗     ██║   █████╗                             ${nocolor}///";
+echo -e "///   ${green}██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝     ██║   ██╔══╝                             ${nocolor}///";
+echo -e "///   ${green}╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ███████╗███████╗   ██║   ███████╗                           ${nocolor}///";
+echo -e "///   ${green} ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝   ╚═╝   ╚══════╝                           ${nocolor}///";
+echo -e "///                                                                                                   ///"
+echo -e "/////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo -e ""
+echo -e "Please edit the file /home/pi/phoniebox_led_control/gpiozero_led.py to match your GPIO-Configuration!"
+echo -e ""
+read -n 1 -s -r -p "Press any key to continue"
+clear
