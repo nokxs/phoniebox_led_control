@@ -33,7 +33,7 @@ echo -e "///${cyan}                                                             
 echo -e "///${cyan}                                                                                                             ${nocolor}///";
 echo -e "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
 echo -e "///                                                                                                              ///"
-echo -e "///${cyan}                                  https://github.com/splitti/button_led_control/                                   ${nocolor}///"
+echo -e "///${cyan}                                  https://github.com/splitti/phoniebox_led_control                           ${nocolor}///";
 echo -e "///                                                                                                              ///"
 echo -e "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
 echo -e ""
@@ -96,7 +96,7 @@ echo -e "////////////////////////////////////////////////////////////////////"
 echo -e " "
 
 lineLen=28
-packages=(git python3 python3-gpiozero)
+packages=(python3 python3-gpiozero)
 for p in ${packages[@]}; do
 	i=0
 	echo -n -e "   --> $p:"
@@ -121,11 +121,15 @@ for p in ${packages[@]}; do
 		echo -e "${green}already installed${nocolor}"
 	fi
 done
-echo -n -e "   --> Delete existing service:"
-echo -n -e "   --> Create Directory:"
-echo -n -e "   --> Downloading Files:"
-echo -n -e "   --> Installing Service:"
+echo -n -e "   --> Delete existing service:     "
+echo -e "${green}done${nocolor}";
+echo -n -e "   --> Create Directory:            "
+echo -e "${green}done${nocolor}";
+echo -n -e "   --> Downloading Files:           "
+echo -e "${green}done${nocolor}";
+echo -n -e "   --> Installing Service:          "
+echo -e "${green}done${nocolor}";
 echo -e ""
 read -n 1 -s -r -p "Press any key to continue"
 
-
+/etc/systemd/system/phoniebox_led_control.service
