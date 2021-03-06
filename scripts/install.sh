@@ -180,12 +180,6 @@ echo -e "${yellow}PLAY-LED     = GPIO 6${nocolor}"
 echo -e "${yellow}NEXT-LED     = GPIO 22${nocolor}"
 echo -e "${yellow}VOLUP-LED    = GPIO 24${nocolor}"
 echo -e "${yellow}VOLDOWN-LED  = GPIO 23${nocolor}"
-
-LED_PREV = PWMLED(5)
-LED_PLAY = PWMLED(6)
-LED_NEXT = PWMLED(22)
-LED_VOLUP = PWMLED(24)
-LED_VOLDOWN = PWMLED(23)
 echo -e ""
 read -n 1 -s -r -p "Press any key to finish installation"
 clear
