@@ -34,7 +34,7 @@ echo -e "///${cyan}                                                             
 echo -e "///${cyan}                                                                                                             ${nocolor}///";
 echo -e "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
 echo -e "///                                                                                                              ///"
-echo -e "///${cyan}                                  https://github.com/splitti/phoniebox_led_control                           ${nocolor}///";
+echo -e "///${cyan}                                  https://github.com/nokxs/phoniebox_led_control                           ${nocolor}///";
 echo -e "///                                                                                                              ///"
 echo -e "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
 echo -e ""
