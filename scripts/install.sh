@@ -3,8 +3,8 @@
 
 #Version: 1.1 - 20210306
 #branch="development"
-#OneLineInstaller: rm /tmp/install_ledb.sh > /dev/null  2>&1; wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/scripts/install.sh -qO /tmp/install_ledb.sh; chmod +x /tmp/install_ledb.sh; /tmp/./install_ledb.sh; rm /tmp/install_ledb.sh > /dev/null  2>&1 
-repo="https://github.com/splitti/phoniebox_led_control"
+#OneLineInstaller: rm /tmp/install_ledb.sh > /dev/null  2>&1; wget https://raw.githubusercontent.com/nokxs/phoniebox_led_control/master/scripts/install.sh -qO /tmp/install_ledb.sh; chmod +x /tmp/install_ledb.sh; /tmp/./install_ledb.sh; rm /tmp/install_ledb.sh > /dev/null  2>&1 
+repo="https://github.com/nokxs/phoniebox_led_control"
 branch="master"
 
 nocolor='\e[0m'
@@ -136,14 +136,14 @@ echo -e "${green}done${nocolor}";
 echo -n -e "   --> Downloading Files:           "
 if [ $ani_type = "1" ]
 then
-	wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/gpiozero_led_kr.py -qO /home/pi/phoniebox_led_control/gpiozero_led.py > /dev/null  2>&1
+	wget https://raw.githubusercontent.com/nokxs/phoniebox_led_control/master/gpiozero_led_kr.py -qO /home/pi/phoniebox_led_control/gpiozero_led.py > /dev/null  2>&1
 else
-	wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/gpiozero_led_st.py -qO /home/pi/phoniebox_led_control/gpiozero_led.py > /dev/null  2>&1
+	wget https://raw.githubusercontent.com/nokxs/phoniebox_led_control/master/gpiozero_led_st.py -qO /home/pi/phoniebox_led_control/gpiozero_led.py > /dev/null  2>&1
 fi
 echo -e "${green}done${nocolor}";
 
 echo -n -e "   --> Installing Service:          "
-sudo wget https://raw.githubusercontent.com/splitti/phoniebox_led_control/master/service/phoniebox_led_control.service -qO /etc/systemd/system/phoniebox_led_control.service > /dev/null  2>&1
+sudo wget https://raw.githubusercontent.com/nokxs/phoniebox_led_control/master/service/phoniebox_led_control.service -qO /etc/systemd/system/phoniebox_led_control.service > /dev/null  2>&1
 sudo chown root:root /etc/systemd/system/phoniebox_led_control.service > /dev/null 2>&1
 sudo chmod 644 /etc/systemd/system/phoniebox_led_control.service > /dev/null 2>&1
 sudo systemctl enable phoniebox_led_control > /dev/null 2>&1
@@ -175,11 +175,11 @@ echo -e "Please edit the file ${red}/home/pi/phoniebox_led_control/gpiozero_led.
 echo -e ""
 echo -e "CURRENT CONFIGURATION:"
 echo -e "========================="
-echo -e "${yellow}<  PREV-LED     = GPIO 5${nocolor}"
-echo -e "${yellow}|> PLAY-LED     = GPIO 6${nocolor}"
-echo -e "${yellow}>  NEXT-LED     = GPIO 22${nocolor}"
-echo -e "${yellow}+  VOLUP-LED    = GPIO 24${nocolor}"
-echo -e "${yellow}-  VOLDOWN-LED  = GPIO 23${nocolor}"
+echo -e "${yellow}<  PREV-LED     = GPIO 19${nocolor}"
+echo -e "${yellow}|> PLAY-LED     = GPIO 13${nocolor}"
+echo -e "${yellow}>  NEXT-LED     = GPIO 16${nocolor}"
+echo -e "${yellow}+  VOLUP-LED    = GPIO 20${nocolor}"
+echo -e "${yellow}-  VOLDOWN-LED  = GPIO 26${nocolor}"
 echo -e ""
 read -n 1 -s -r -p "Press any key to finish installation"
 clear
