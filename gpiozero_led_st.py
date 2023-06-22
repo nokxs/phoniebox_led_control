@@ -14,8 +14,6 @@ LED_PLAY = PWMLED(13)
 LED_NEXT = PWMLED(16)
 LED_VOLUP = PWMLED(20)
 
-#ALL_GPIO = [LED_PREV, LED_PLAY, LED_NEXT, LED_VOLUP, LED_VOLDOWN]
-
 def sigterm_handler(*_):
     LED_VOLDOWN.off()
     LED_VOLUP.off()
@@ -29,30 +27,13 @@ def sigterm_handler(*_):
     sleep(0.1)
     LED_PLAY.off()
     LED_PLAY.close()
-#    for device in ALL_GPIO:
-#        device.off()
-#        device.close()
     sys.exit(0)
 
 
 def getshell():
-#    process = check_output("/bin/ps -ef | grep mopidy | grep -v grep | awk '{print $2}'", shell=True)
-#    process = process.decode()
-#    return process
     process = subprocess.Popen("echo -e status\\nclose | nc -w 1 localhost 6600 | grep 'OK MPD'", shell=True, stdout=subprocess.PIPE).communicate()[0].decode('utf-8').strip()
     return process
 
-
-#def ledon(ledname):
-#    for x in range(100):
-#        ledname.value = x * 0.001
-#        sleep(0.02)
-
-
-#def ledoff(ledname):
-#    for x in range(100, -1, -1):
-#        ledname.value = x * 0.001
-#        sleep(0.02)
 
 def initiate_animation():
     process = ""
@@ -85,6 +66,13 @@ def leds_on():
     LED_VOLDOWN.on()
     LED_VOLUP.on()
 
+def leds_off():
+    LED_VOLDOWN.off()
+    LED_VOLUP.off()
+    sleep(1)
+    LED_PREV.off()
+    LED_NEXT.off()
+
 def main():
     dummy = ""
     while dummy == "":
@@ -94,5 +82,6 @@ def main():
 if __name__ == "__main__":
     initiate_animation()
     leds_on()
+    leds_off()
     signal.signal(signal.SIGTERM, sigterm_handler)
     main()
